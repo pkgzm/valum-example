@@ -1,4 +1,3 @@
-//using GLib;
 using Valum;
 using Valum.ContentNegotiation;
 using VSGI;
@@ -18,12 +17,10 @@ public int main (string[] args) {
 	TlsCertificate tls_certificate;
 	try {
 		tls_certificate = new TlsCertificate.from_files ("cert.pem",
-			                                         "key.pem");
+		                                                 "key.pem");
 	} catch (Error err) {
 		assert_not_reached ();
 	}
 
 	return Server.@new ("http", https: true, tls_certificate: tls_certificate, handler: app).run (args);
-
-	//return Server.@new ("http", handler: app).run (args);
 }
