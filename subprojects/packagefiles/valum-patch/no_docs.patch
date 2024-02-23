@@ -1,0 +1,20 @@
+diff -uN ../valum/meson.build valum/meson.build
+--- ../valum/meson.build	2024-02-20 14:34:19.318759496 +0100
++++ valum/meson.build	2024-02-21 12:29:20.992875180 +0100
+@@ -22,7 +22,9 @@
+
+ subdir('src')
+ subdir('tests')
+-subdir('docs')
++if get_option('enable_docs')
++    subdir('docs')
++endif
+ if get_option('enable_examples')
+     subdir('examples')
+ endif
+diff -uN ../valum/meson_options.txt valum/meson_options.txt
+--- ../valum/meson_options.txt	2024-02-20 14:34:19.322759592 +0100
++++ valum/meson_options.txt	2024-02-21 12:39:17.226126431 +0100
+@@ -1 +1,2 @@
++option('enable_docs', type: 'boolean', value: false, description: 'build documentation')
+ option('enable_examples', type: 'boolean', value: false, description: 'build examples')

@@ -13,6 +13,10 @@ meson ..
 ninja
 ```
 
+In the same directory of the application, the following files should be present:
+ * ``cert.pem``
+ * ``key.pem``
+ 
 The resulting binary is ready to be launched!
 
 ```bash
@@ -31,3 +35,4 @@ For more details about supported options, set the ``--help`` flag.
 ```bash
 ./app --help
 ```
+

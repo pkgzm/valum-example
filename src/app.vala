@@ -8,7 +8,6 @@ public int main (string[] args) {
 	app.use (basic ());
 
 	app.use (accept ("text/plain"));
-	app.use (accept_charset ("UTF-8"));
 
 	app.get ("/", (req, res) => {
 		return res.expand_utf8 ("Hello world!");
@@ -19,8 +18,9 @@ public int main (string[] args) {
 		tls_certificate = new TlsCertificate.from_files ("cert.pem",
 		                                                 "key.pem");
 	} catch (Error err) {
-		assert_not_reached ();
+		critical (err.message);
+		return 1;
 	}
 
-	return Server.@new ("http", https: true, tls_certificate: tls_certificate, handler: app).run (args);
+	return Server.@new ("http", handler: app, https: true, tls_certificate: tls_certificate).run (args);
 }

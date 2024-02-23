@@ -1,4 +1,6 @@
 [wrap-git]
 directory=valum
 url=https://github.com/valum-framework/valum.git
-revision=v0.3.15
+revision=HEAD
+depth = 1
+diff_files = valum-patch/no_docs.patch
